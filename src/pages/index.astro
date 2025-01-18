@@ -1,0 +1,203 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Products from '../components/Products.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<MainLayout title="Inicio">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="/hero-bg.jpg" alt="Válvulas industriales" />
+    </div>
+    <div class="hero-content">
+      <h1>VCJ Válvulas Cuevas Jessi</h1>
+      <p class="hero-subtitle">Expertos en Soluciones de Control de Flujo</p>
+      <div class="hero-cta">
+        <a href="/cotizacion" class="cta-button">Solicitar Cotización</a>
+        <a href="/nosotros" class="cta-button secondary">Conócenos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="features-container">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h3>Calidad Garantizada</h3>
+        <p>Productos certificados que cumplen con los más altos estándares de la industria</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <h3>Entrega Rápida</h3>
+        <p>Envíos puntuales y servicio eficiente para mantener tu proyecto en marcha</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <h3>Soporte Técnico</h3>
+        <p>Asesoría especializada para ayudarte a elegir la mejor solución</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <Products />
+
+  <!-- Contact Form Section -->
+  <ContactForm />
+
+  <!-- Footer -->
+  <Footer />
+</MainLayout>
+
+<style>
+  /* Hero Styles */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    padding: 2rem;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  /* Features Styles */
+  .features {
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+  }
+
+  .features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .feature-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    color: white;
+  }
+
+  .feature-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .feature-card p {
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .features {
+      padding: 3rem 1rem;
+    }
+  }
+</style>

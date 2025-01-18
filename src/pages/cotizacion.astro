@@ -1,0 +1,670 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Solicitud de Cotización">
+  <section class="quote-section">
+    <div class="container">
+      <div class="quote-header">
+        <h1>Solicitar Cotización</h1>
+        <p class="quote-description">Complete el formulario para recibir una cotización personalizada de nuestros productos.</p>
+      </div>
+
+      <form id="quoteForm" class="quote-form">
+        <!-- Paso 1: Información Personal -->
+        <div class="form-step" data-step="1">
+          <h2>Información Personal</h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nombre">Nombre*</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa">
+            </div>
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" required placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono*</label>
+              <input type="tel" id="telefono" name="telefono" required placeholder="(55) XXXX-XXXX">
+            </div>
+          </div>
+        </div>
+
+        <!-- Paso 2: Selección de Productos -->
+        <div class="form-step" data-step="2" style="display: none;">
+          <h2>Selección de Productos</h2>
+          <div class="product-selector">
+            <div class="product-category">
+              <h3>Tipo de Válvula</h3>
+              <div class="product-options">
+                <label class="product-option">
+                  <input type="radio" name="tipoValvula" value="compuerta">
+                  <span class="option-content">
+                    <img src="/productos/valvula-compuerta.jpg" alt="Válvula de Compuerta">
+                    <span class="option-text">Válvula de Compuerta</span>
+                  </span>
+                </label>
+                <label class="product-option">
+                  <input type="radio" name="tipoValvula" value="bola">
+                  <span class="option-content">
+                    <img src="/productos/valvula-bola.jpg" alt="Válvula de Bola">
+                    <span class="option-text">Válvula de Bola</span>
+                  </span>
+                </label>
+                <label class="product-option">
+                  <input type="radio" name="tipoValvula" value="mariposa">
+                  <span class="option-content">
+                    <img src="/productos/valvula-mariposa.jpg" alt="Válvula de Mariposa">
+                    <span class="option-text">Válvula de Mariposa</span>
+                  </span>
+                </label>
+                <label class="product-option">
+                  <input type="radio" name="tipoValvula" value="globo">
+                  <span class="option-content">
+                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
+                    <span class="option-text">Válvula de Globo</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paso 3: Especificaciones -->
+        <div class="form-step" data-step="3" style="display: none;">
+          <h2>Especificaciones Técnicas</h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="material">Material</label>
+              <select id="material" name="material" required>
+                <option value="">Seleccionar material</option>
+                <option value="acero-inox">Acero Inoxidable</option>
+                <option value="hierro">Hierro Fundido</option>
+                <option value="bronce">Bronce</option>
+                <option value="pvc">PVC</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="tamaño">Tamaño (pulgadas)</label>
+              <select id="tamaño" name="tamaño" required>
+                <option value="">Seleccionar tamaño</option>
+                <option value="0.5">1/2"</option>
+                <option value="0.75">3/4"</option>
+                <option value="1">1"</option>
+                <option value="1.5">1 1/2"</option>
+                <option value="2">2"</option>
+                <option value="3">3"</option>
+                <option value="4">4"</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="presion">Presión de Trabajo (PSI)</label>
+              <select id="presion" name="presion" required>
+                <option value="">Seleccionar presión</option>
+                <option value="150">150 PSI</option>
+                <option value="300">300 PSI</option>
+                <option value="600">600 PSI</option>
+                <option value="900">900 PSI</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cantidad">Cantidad</label>
+              <input type="number" id="cantidad" name="cantidad" min="1" required placeholder="Cantidad requerida">
+            </div>
+          </div>
+        </div>
+
+        <!-- Paso 4: Comentarios Adicionales -->
+        <div class="form-step" data-step="4" style="display: none;">
+          <h2>Comentarios Adicionales</h2>
+          <div class="form-group">
+            <label for="comentarios">Comentarios o Especificaciones Adicionales</label>
+            <textarea id="comentarios" name="comentarios" rows="4" placeholder="Proporcione cualquier detalle adicional que considere importante..."></textarea>
+          </div>
+        </div>
+
+        <!-- Navegación entre pasos -->
+        <div class="form-navigation">
+          <div class="step-indicators">
+            <span class="step-indicator active" data-step="1"></span>
+            <span class="step-indicator" data-step="2"></span>
+            <span class="step-indicator" data-step="3"></span>
+            <span class="step-indicator" data-step="4"></span>
+          </div>
+          <div class="navigation-buttons">
+            <button type="button" class="nav-button" id="prevStep" style="display: none;">Anterior</button>
+            <button type="button" class="nav-button primary" id="nextStep">Siguiente</button>
+            <button type="submit" class="submit-button" id="submitQuote" style="display: none;">Solicitar Cotización</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <style>
+    .quote-section {
+      padding: var(--spacing-3xl) var(--spacing-xl);
+      background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-alt) 100%);
+      min-height: 100vh;
+      padding-top: calc(var(--spacing-4xl) + 80px); /* Aumentado el padding superior */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-xl);
+    }
+
+    .quote-header {
+      text-align: center;
+      margin-bottom: var(--spacing-2xl);
+      animation: fadeIn 0.8s ease-out;
+      margin-top: var(--spacing-xl); /* Añadido margen superior extra */
+    }
+
+    .quote-header h1 {
+      font-size: var(--font-size-3xl);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-md);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .quote-description {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .quote-form {
+      background: var(--color-background);
+      padding: var(--spacing-3xl);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: slideUp 0.8s ease-out;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .form-step {
+      margin-bottom: var(--spacing-3xl);
+      transition: all 0.3s ease;
+      padding: var(--spacing-xl) 0;
+    }
+
+    .form-step h2 {
+      color: var(--color-primary);
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-xl);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .form-step h2::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 24px;
+      background: var(--color-primary);
+      border-radius: var(--radius-sm);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-2xl);
+      margin-top: var(--spacing-xl);
+    }
+
+    .form-group {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-text);
+      font-weight: 500;
+      font-size: var(--font-size-base);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: var(--spacing-md);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-background);
+      color: var(--color-text);
+      font-size: var(--font-size-base);
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
+      outline: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--color-text-light);
+    }
+
+    .product-selector {
+      margin-top: var(--spacing-2xl);
+    }
+
+    .product-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-xl);
+      padding: var(--spacing-lg);
+    }
+
+    .product-option {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .product-option:hover {
+      transform: translateY(-5px);
+    }
+
+    .option-content {
+      background: var(--color-background);
+      padding: var(--spacing-xl);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-option input[type="radio"]:checked + .option-content {
+      border-color: var(--color-primary);
+      box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.15);
+      transform: translateY(-5px);
+    }
+
+    .option-content img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-md);
+      transition: transform 0.3s ease;
+    }
+
+    .option-content:hover img {
+      transform: scale(1.05);
+    }
+
+    .option-text {
+      font-weight: 600;
+      color: var(--color-text);
+      text-align: center;
+      margin-top: var(--spacing-sm);
+    }
+
+    .form-navigation {
+      margin-top: var(--spacing-3xl);
+      padding-top: var(--spacing-2xl);
+      border-top: 2px solid var(--color-border);
+    }
+
+    .step-indicators {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .step-indicator {
+      width: 40px;
+      height: 4px;
+      background: var(--color-border);
+      border-radius: var(--radius-full);
+      transition: all 0.3s ease;
+    }
+
+    .step-indicator.active {
+      background: var(--color-primary);
+      width: 60px;
+    }
+
+    .navigation-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-xl);
+      margin-top: var(--spacing-2xl);
+    }
+
+    .nav-button,
+    .submit-button {
+      padding: var(--spacing-lg) var(--spacing-2xl);
+      font-size: var(--font-size-lg);
+      margin: 10px auto;
+      min-width: 180px;
+      min-height: 50px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-button.primary {
+      background: var(--color-primary);
+      color: white;
+      min-width: 200px;
+      min-height: 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-button::after,
+    .submit-button::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(rgba(255,255,255,0.2), transparent);
+      pointer-events: none;
+    }
+
+    .nav-button.primary {
+      background: var(--color-primary);
+      color: white;
+      min-width: 200px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-button:not(.primary) {
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+
+    .nav-button:hover,
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-button:active,
+    .submit-button:active {
+      transform: translateY(1px);
+    }
+
+    .nav-button.primary:hover {
+      background: var(--color-primary-dark);
+    }
+
+    .nav-button:not(.primary):hover {
+      background: rgba(var(--color-primary-rgb), 0.1);
+    }
+
+    .submit-button {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+      min-width: 240px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-button:hover {
+      background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-dark) 100%);
+    }
+
+    .submit-button:disabled {
+      background: var(--color-text-light);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .nav-button::before,
+    .submit-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease-out, height 0.6s ease-out;
+    }
+
+    .nav-button:active::before,
+    .submit-button:active::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    @media (max-width: 768px) {
+      .quote-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+      }
+
+      .quote-form {
+        padding: var(--spacing-xl);
+      }
+
+      .form-step {
+        padding: var(--spacing-lg) 0;
+      }
+
+      .form-grid {
+        gap: var(--spacing-xl);
+      }
+
+      .navigation-buttons {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-md);
+      }
+
+      .nav-button,
+      .submit-button {
+        width: 100%;
+        min-width: 100%;
+        padding: var(--spacing-md) var(--spacing-lg);
+      }
+    }
+
+    .error {
+      border-color: var(--color-error) !important;
+    }
+
+    .error-message {
+      color: var(--color-error);
+      font-size: var(--font-size-sm);
+      margin-top: var(--spacing-xs);
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentStep = 1;
+      const totalSteps = 4;
+
+      function validateCurrentStep() {
+        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+        const requiredFields = currentStepElement.querySelectorAll('[required]');
+        let isValid = true;
+
+        document.querySelectorAll('.error-message').forEach(msg => msg.remove());
+        document.querySelectorAll('.error').forEach(field => field.classList.remove('error'));
+
+        requiredFields.forEach(field => {
+          if (!field.value) {
+            isValid = false;
+            field.classList.add('error');
+            
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'Este campo es requerido';
+            field.parentNode.appendChild(errorMessage);
+          } else if (field.type === 'email' && !isValidEmail(field.value)) {
+            isValid = false;
+            field.classList.add('error');
+            
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'Por favor ingrese un email válido';
+            field.parentNode.appendChild(errorMessage);
+          } else if (field.type === 'tel' && !isValidPhone(field.value)) {
+            isValid = false;
+            field.classList.add('error');
+            
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'Por favor ingrese un teléfono válido';
+            field.parentNode.appendChild(errorMessage);
+          }
+        });
+
+        if (currentStep === 2) {
+          const selectedProduct = document.querySelector('input[name="tipoValvula"]:checked');
+          if (!selectedProduct) {
+            isValid = false;
+            const productSelector = document.querySelector('.product-selector');
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'Por favor seleccione un producto';
+            productSelector.appendChild(errorMessage);
+          }
+        }
+
+        return isValid;
+      }
+
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function isValidPhone(phone) {
+        return /^[\d\s()-]+$/.test(phone) && phone.replace(/\D/g, '').length >= 10;
+      }
+
+      function updateStepVisibility() {
+        document.querySelectorAll('.form-step').forEach(step => {
+          step.style.display = 'none';
+        });
+        
+        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+        currentStepElement.style.display = 'block';
+        currentStepElement.style.opacity = '0';
+        setTimeout(() => {
+          currentStepElement.style.opacity = '1';
+        }, 50);
+        
+        document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+          indicator.classList.toggle('active', index + 1 <= currentStep);
+        });
+        
+        const prevButton = document.getElementById('prevStep');
+        const nextButton = document.getElementById('nextStep');
+        const submitButton = document.getElementById('submitQuote');
+        
+        if (prevButton && nextButton && submitButton) {
+          prevButton.style.display = currentStep === 1 ? 'none' : 'block';
+          nextButton.style.display = currentStep === totalSteps ? 'none' : 'block';
+          submitButton.style.display = currentStep === totalSteps ? 'block' : 'none';
+        }
+      }
+
+      document.getElementById('nextStep')?.addEventListener('click', () => {
+        if (validateCurrentStep()) {
+          if (currentStep < totalSteps) {
+            currentStep++;
+            updateStepVisibility();
+          }
+        }
+      });
+
+      document.getElementById('prevStep')?.addEventListener('click', () => {
+        if (currentStep > 1) {
+          currentStep--;
+          updateStepVisibility();
+        }
+      });
+
+      document.getElementById('quoteForm')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (validateCurrentStep()) {
+          const formData = new FormData(e.target);
+          const data = Object.fromEntries(formData.entries());
+          
+          try {
+            const submitButton = document.getElementById('submitQuote');
+            if (submitButton) {
+              submitButton.disabled = true;
+              submitButton.textContent = 'Enviando...';
+            }
+
+            const response = await fetch('/api/quote', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+              alert('¡Cotización enviada con éxito! Nos pondremos en contacto contigo pronto.');
+              window.location.href = '/';
+            } else {
+              throw new Error('Error al enviar la cotización');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('Lo sentimos, hubo un error al enviar la cotización. Por favor, intenta nuevamente.');
+          } finally {
+            const submitButton = document.getElementById('submitQuote');
+            if (submitButton) {
+              submitButton.disabled = false;
+              submitButton.textContent = 'Solicitar Cotización';
+            }
+          }
+        }
+      });
+
+      updateStepVisibility();
+
+      document.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('input', () => {
+          field.classList.remove('error');
+          const errorMessage = field.parentNode.querySelector('.error-message');
+          if (errorMessage) {
+            errorMessage.remove();
+          }
+        });
+      });
+    });
+  </script>
+</MainLayout>
