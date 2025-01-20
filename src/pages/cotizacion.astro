@@ -39,34 +39,62 @@ import MainLayout from '../layouts/MainLayout.astro';
           <h2>Selección de Productos</h2>
           <div class="product-selector">
             <div class="product-category">
-              <h3>Tipo de Válvula</h3>
+              <h3>Modelo de Válvula</h3>
               <div class="product-options">
                 <label class="product-option">
-                  <input type="radio" name="tipoValvula" value="compuerta">
+                  <input type="radio" name="modeloValvula" value="compuerta">
                   <span class="option-content">
                     <img src="/productos/valvula-compuerta.jpg" alt="Válvula de Compuerta">
-                    <span class="option-text">Válvula de Compuerta</span>
+                    <span class="option-text">Serie 10</span>
                   </span>
                 </label>
                 <label class="product-option">
-                  <input type="radio" name="tipoValvula" value="bola">
+                  <input type="radio" name="modeloValvula" value="bola">
                   <span class="option-content">
                     <img src="/productos/valvula-bola.jpg" alt="Válvula de Bola">
-                    <span class="option-text">Válvula de Bola</span>
+                    <span class="option-text">Serie 20</span>
                   </span>
                 </label>
                 <label class="product-option">
-                  <input type="radio" name="tipoValvula" value="mariposa">
+                  <input type="radio" name="modeloValvula" value="mariposa">
                   <span class="option-content">
                     <img src="/productos/valvula-mariposa.jpg" alt="Válvula de Mariposa">
-                    <span class="option-text">Válvula de Mariposa</span>
+                    <span class="option-text">Serie 75</span>
                   </span>
                 </label>
                 <label class="product-option">
-                  <input type="radio" name="tipoValvula" value="globo">
+                  <input type="radio" name="modeloValvula" value="globo">
                   <span class="option-content">
                     <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
-                    <span class="option-text">Válvula de Globo</span>
+                    <span class="option-text">Serie 99</span>
+                  </span>
+                </label>
+                <label class="product-option">
+                  <input type="radio" name="modeloValvula" value="globo">
+                  <span class="option-content">
+                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
+                    <span class="option-text">Serie 15</span>
+                  </span>
+                </label>
+                <label class="product-option">
+                  <input type="radio" name="modeloValvula" value="globo">
+                  <span class="option-content">
+                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
+                    <span class="option-text">Serie 16</span>
+                  </span>
+                </label>
+                <label class="product-option">
+                  <input type="radio" name="modeloValvula" value="globo">
+                  <span class="option-content">
+                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
+                    <span class="option-text">Serie 17</span>
+                  </span>
+                </label>
+                <label class="product-option">
+                  <input type="radio" name="modeloValvula" value="globo">
+                  <span class="option-content">
+                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
+                    <span class="option-text">Serie 86</span>
                   </span>
                 </label>
               </div>
@@ -83,32 +111,109 @@ import MainLayout from '../layouts/MainLayout.astro';
               <select id="material" name="material" required>
                 <option value="">Seleccionar material</option>
                 <option value="acero-inox">Acero Inoxidable</option>
-                <option value="hierro">Hierro Fundido</option>
                 <option value="bronce">Bronce</option>
-                <option value="pvc">PVC</option>
               </select>
             </div>
             <div class="form-group">
               <label for="tamaño">Tamaño (pulgadas)</label>
               <select id="tamaño" name="tamaño" required>
-                <option value="">Seleccionar tamaño</option>
-                <option value="0.5">1/2"</option>
-                <option value="0.75">3/4"</option>
-                <option value="1">1"</option>
-                <option value="1.5">1 1/2"</option>
-                <option value="2">2"</option>
-                <option value="3">3"</option>
-                <option value="4">4"</option>
+                <option value="">Seleccionar tamaño orificio</option>
+                <option value="0.5">A 0.062</option>
+                <option value="0.75">B 0.184</option>
+                <option value="1">C 0.442</option>
+                <option value="1.5">D 0.11</option>
+                <option value="2">E 0.196</option>
+                <option value="3">F 0.307</option>
+                <option value="4">G 0.503</option>
+                <option value="5">H 0.785</option>
+                <option value="6">J 1.287</option>
+                <option value="8">K 1.853</option>
+                <option value="10">L 2.853</option>
+                <option value="12">M 3.6</option>
+                <option value="16">N 4.34</option>
+                <option value="20">P 6.38</option>
+                <option value="25">O 11.05</option>
+                <option value="30">R 16</option>
+                <option value="35">T 26</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="presion">Presión de Trabajo (PSI)</label>
+              <label for="presion">Tipo de Construcción (PSI)</label>
               <select id="presion" name="presion" required>
                 <option value="">Seleccionar presión</option>
-                <option value="150">150 PSI</option>
-                <option value="300">300 PSI</option>
-                <option value="600">600 PSI</option>
-                <option value="900">900 PSI</option>
+                <option value="150">X Convencional</option>
+                <option value="300">Y Balanceada</option>
+                <option value="600">Z Convencional con Sello Blando</option>
+                <option value="900">W Balanceada con Sello Blando</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="materiales">Rango de Temperatura y Materiales</label>
+              <select id="materiales" name="materiales" required>
+                <option value="">Seleccionar material</option>
+                <option value="acero-inox">1 -20 A 450°F</option>
+                <option value="bronce">2 451 A 800°F</option>
+                <option value="bronce">3 801 A 1000°F</option>
+                <option value="bronce">4 -21 A -75°F</option>
+                <option value="bronce">5 -70 A -150°F</option>
+                <option value="bronce">6 -151 A -450°F</option>
+                <option value="bronce">7 Vapor Saturado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="brida">Rango de Brida</label>
+              <select id="brida" name="brida" required>
+                <option value="">Seleccionar valor</option>
+                <option value="acero-inox">150#</option>
+                <option value="bronce">300# Pesado</option>
+                <option value="bronce">300# Ligero</option>
+                <option value="bronce">600#</option>
+                <option value="bronce">900#</option>
+                <option value="bronce">1500#</option>
+                <option value="bronce">2500#</option>
+                <option value="bronce">Sin brida</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="entrada">Cara de entrada de la valvula</label>
+              <select id="entrada" name="entrada" required>
+                <option value="">Seleccionar valor</option>
+                <option value="acero-inox">M Rosacada Macho</option>
+                <option value="bronce">H Roscada Hembra</option>
+                <option value="bronce">1 Realizada (RF)</option>
+                <option value="bronce">2 Metalica A.N.S.I STD (RTJ)</option>
+                <option value="bronce">3 Escpecial</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="accesorios_valvula">Accesorios de Válvula</label>
+              <select id="accesorios_valvula" name="accesorios_valvula" required>
+                <option value="">Seleccionar valor</option>
+                <option value="capucha">Capucha Roscada</option>
+                <option value="palanca-simple">Palanca de Acción Sencilla</option>
+                <option value="palanca-doble">Palanca de Acción Doble</option>
+                <option value="palanca-yugo">Palanca y Yugo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mordaza">Mordaza de Prueba</label>
+              <select id="mordaza" name="mordaza" required>
+                <option value="">Seleccionar valor</option>
+                <option value="sin-mordaza">Sin mordaza</option>
+                <option value="con-mordaza">Con mordaza</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="roscadas">Solo para válvulas roscadas</label>
+              <select id="roscadas" name="roscadas">
+                <option value="">Seleccionar valor</option>
+                <option value="1/2">1/2" N.P.T</option>
+                <option value="3/4">3/4" N.P.T</option>
+                <option value="1">1" N.P.T</option>
+                <option value="1 1/4">1 1/4" N.P.T</option>
+                <option value="1 1/2">1 1/2" N.P.T</option>
+                <option value="2">2" N.P.T</option>
+                <option value="2 1/2">2 1/2" N.P.T</option>
               </select>
             </div>
             <div class="form-group">
@@ -127,6 +232,24 @@ import MainLayout from '../layouts/MainLayout.astro';
           </div>
         </div>
 
+        <!-- Paso 5: Confirmación -->
+        <div class="form-step" data-step="5" style="display: none;">
+          <h2>Confirmación de Pedido</h2>
+          <div class="confirmation-summary">
+            <h3>Información Personal</h3>
+            <div id="personal-info-summary" class="summary-section"></div>
+            
+            <h3>Producto Seleccionado</h3>
+            <div id="product-summary" class="summary-section"></div>
+            
+            <h3>Especificaciones Técnicas</h3>
+            <div id="specs-summary" class="summary-section"></div>
+            
+            <h3>Comentarios Adicionales</h3>
+            <div id="comments-summary" class="summary-section"></div>
+          </div>
+        </div>
+
         <!-- Navegación entre pasos -->
         <div class="form-navigation">
           <div class="step-indicators">
@@ -134,6 +257,7 @@ import MainLayout from '../layouts/MainLayout.astro';
             <span class="step-indicator" data-step="2"></span>
             <span class="step-indicator" data-step="3"></span>
             <span class="step-indicator" data-step="4"></span>
+            <span class="step-indicator" data-step="5"></span>
           </div>
           <div class="navigation-buttons">
             <button type="button" class="nav-button" id="prevStep" style="display: none;">Anterior</button>
@@ -504,12 +628,42 @@ import MainLayout from '../layouts/MainLayout.astro';
       font-size: var(--font-size-sm);
       margin-top: var(--spacing-xs);
     }
+
+    .confirmation-summary {
+      background: var(--color-background-alt);
+      padding: var(--spacing-2xl);
+      border-radius: var(--radius-lg);
+      margin-top: var(--spacing-xl);
+    }
+
+    .confirmation-summary h3 {
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--font-size-lg);
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: var(--spacing-sm);
+    }
+
+    .summary-section {
+      margin-bottom: var(--spacing-2xl);
+      font-size: var(--font-size-base);
+    }
+
+    .summary-section p {
+      margin: var(--spacing-xs) 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .summary-section strong {
+      color: var(--color-text);
+    }
   </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       let currentStep = 1;
-      const totalSteps = 4;
+      const totalSteps = 5;
 
       function validateCurrentStep() {
         const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
@@ -544,11 +698,19 @@ import MainLayout from '../layouts/MainLayout.astro';
             errorMessage.className = 'error-message';
             errorMessage.textContent = 'Por favor ingrese un teléfono válido';
             field.parentNode.appendChild(errorMessage);
+          } else if (field.type === 'number' && field.value < 1) {
+            isValid = false;
+            field.classList.add('error');
+            
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'error-message';
+            errorMessage.textContent = 'La cantidad debe ser mayor a 0';
+            field.parentNode.appendChild(errorMessage);
           }
         });
 
         if (currentStep === 2) {
-          const selectedProduct = document.querySelector('input[name="tipoValvula"]:checked');
+          const selectedProduct = document.querySelector('input[name="modeloValvula"]:checked');
           if (!selectedProduct) {
             isValid = false;
             const productSelector = document.querySelector('.product-selector');
@@ -568,6 +730,51 @@ import MainLayout from '../layouts/MainLayout.astro';
 
       function isValidPhone(phone) {
         return /^[\d\s()-]+$/.test(phone) && phone.replace(/\D/g, '').length >= 10;
+      }
+
+      function updateSummary() {
+        if (currentStep === 5) {
+          // Información Personal
+          const personalInfo = document.getElementById('personal-info-summary');
+          personalInfo.innerHTML = `
+            <p><strong>Nombre:</strong> ${document.getElementById('nombre').value}</p>
+            <p><strong>Empresa:</strong> ${document.getElementById('empresa').value || 'No especificada'}</p>
+            <p><strong>Email:</strong> ${document.getElementById('email').value}</p>
+            <p><strong>Teléfono:</strong> ${document.getElementById('telefono').value}</p>
+          `;
+
+          // Producto Seleccionado
+          const productSummary = document.getElementById('product-summary');
+          const selectedValve = document.querySelector('input[name="modeloValvula"]:checked');
+          productSummary.innerHTML = `
+            <p><strong>Modelo:</strong> ${selectedValve ? selectedValve.parentElement.querySelector('.option-text').textContent : 'No seleccionado'}</p>
+            <p><strong>Cantidad:</strong> ${document.getElementById('cantidad').value}</p>
+          `;
+
+          // Especificaciones Técnicas
+          const specsSummary = document.getElementById('specs-summary');
+          specsSummary.innerHTML = `
+            <p><strong>Material:</strong> ${document.getElementById('material').selectedOptions[0].text}</p>
+            <p><strong>Tamaño:</strong> ${document.getElementById('tamaño').selectedOptions[0].text}</p>
+            <p><strong>Tipo de Construcción:</strong> ${document.getElementById('presion').selectedOptions[0].text}</p>
+            <p><strong>Rango de Temperatura:</strong> ${document.getElementById('materiales').selectedOptions[0].text}</p>
+            <p><strong>Rango de Brida:</strong> ${document.getElementById('brida').selectedOptions[0].text}</p>
+            <p><strong>Cara de entrada:</strong> ${document.getElementById('entrada').selectedOptions[0].text}</p>
+            <p><strong>Accesorios:</strong> ${document.getElementById('accesorios_valvula').selectedOptions[0].text}</p>
+            <p><strong>Mordaza de Prueba:</strong> ${document.getElementById('mordaza').selectedOptions[0].text}</p>
+          `;
+
+          if (document.getElementById('roscadas').value) {
+            specsSummary.innerHTML += `
+              <p><strong>Especificación Roscada:</strong> ${document.getElementById('roscadas').selectedOptions[0].text}</p>
+            `;
+          }
+
+          // Comentarios
+          const commentsSummary = document.getElementById('comments-summary');
+          const comentarios = document.getElementById('comentarios').value;
+          commentsSummary.innerHTML = comentarios ? `<p>${comentarios}</p>` : '<p>Sin comentarios adicionales</p>';
+        }
       }
 
       function updateStepVisibility() {
@@ -595,6 +802,8 @@ import MainLayout from '../layouts/MainLayout.astro';
           nextButton.style.display = currentStep === totalSteps ? 'none' : 'block';
           submitButton.style.display = currentStep === totalSteps ? 'block' : 'none';
         }
+
+        updateSummary();
       }
 
       document.getElementById('nextStep')?.addEventListener('click', () => {
