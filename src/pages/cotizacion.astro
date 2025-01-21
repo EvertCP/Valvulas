@@ -38,65 +38,30 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="form-step" data-step="2" style="display: none;">
           <h2>Selección de Productos</h2>
           <div class="product-selector">
+          <!-- Selector de Material -->
+            <div class="product-category">
+              <h3>Material</h3>
+              <div class="material-options">
+                <label class="material-option">
+                  <input type="radio" name="material" value="acero-inoxidable">
+                  <span class="option-content">
+                    <span class="option-text">Acero Inoxidable</span>
+                  </span>
+                </label>
+                <label class="material-option">
+                  <input type="radio" name="material" value="bronce">
+                  <span class="option-content">
+                    <span class="option-text">Bronce</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
             <div class="product-category">
               <h3>Modelo de Válvula</h3>
-              <div class="product-options">
-                <label class="product-option">
-                  <input type="radio" name="modeloValvula" value="compuerta">
-                  <span class="option-content">
-                    <img src="/productos/valvula-compuerta.jpg" alt="Válvula de Compuerta">
-                    <span class="option-text">Serie 10</span>
-                  </span>
-                </label>
-                <label class="product-option">
-                  <input type="radio" name="modeloValvula" value="bola">
-                  <span class="option-content">
-                    <img src="/productos/valvula-bola.jpg" alt="Válvula de Bola">
-                    <span class="option-text">Serie 20</span>
-                  </span>
-                </label>
-                <label class="product-option">
-                  <input type="radio" name="modeloValvula" value="mariposa">
-                  <span class="option-content">
-                    <img src="/productos/valvula-mariposa.jpg" alt="Válvula de Mariposa">
-                    <span class="option-text">Serie 75</span>
-                  </span>
-                </label>
-                <label class="product-option">
-                  <input type="radio" name="modeloValvula" value="globo">
-                  <span class="option-content">
-                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
-                    <span class="option-text">Serie 99</span>
-                  </span>
-                </label>
-                <label class="product-option">
-                  <input type="radio" name="modeloValvula" value="globo">
-                  <span class="option-content">
-                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
-                    <span class="option-text">Serie 15</span>
-                  </span>
-                </label>
-                <label class="product-option">
-                  <input type="radio" name="modeloValvula" value="globo">
-                  <span class="option-content">
-                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
-                    <span class="option-text">Serie 16</span>
-                  </span>
-                </label>
-                <label class="product-option">
-                  <input type="radio" name="modeloValvula" value="globo">
-                  <span class="option-content">
-                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
-                    <span class="option-text">Serie 17</span>
-                  </span>
-                </label>
-                <label class="product-option">
-                  <input type="radio" name="modeloValvula" value="globo">
-                  <span class="option-content">
-                    <img src="/productos/valvula-globo.jpg" alt="Válvula de Globo">
-                    <span class="option-text">Serie 86</span>
-                  </span>
-                </label>
+              <div class="product-options" id="valvulaOptions">
+                <p class="select-material-message">Por favor, seleccione primero el material</p>
+                <!-- Las opciones de válvulas se cargarán dinámicamente -->
               </div>
             </div>
           </div>
@@ -106,14 +71,6 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="form-step" data-step="3" style="display: none;">
           <h2>Especificaciones Técnicas</h2>
           <div class="form-grid">
-            <div class="form-group">
-              <label for="material">Material</label>
-              <select id="material" name="material" required>
-                <option value="">Seleccionar material</option>
-                <option value="acero-inox">Acero Inoxidable</option>
-                <option value="bronce">Bronce</option>
-              </select>
-            </div>
             <div class="form-group">
               <label for="tamaño">Tamaño (pulgadas)</label>
               <select id="tamaño" name="tamaño" required>
@@ -389,6 +346,39 @@ import MainLayout from '../layouts/MainLayout.astro';
       margin-top: var(--spacing-2xl);
     }
 
+    .product-category {
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .material-options {
+      display: flex;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .material-option {
+      flex: 1;
+      cursor: pointer;
+      padding: var(--spacing-md);
+      border: 2px solid var(--color-border);
+      border-radius: var(--border-radius);
+      transition: all 0.3s ease;
+    }
+
+    .material-option:hover {
+      border-color: var(--color-primary);
+    }
+
+    .material-option input[type="radio"]:checked + .option-content {
+      color: var(--color-primary);
+    }
+
+    .select-material-message {
+      text-align: center;
+      color: var(--color-text-muted);
+      padding: var(--spacing-lg);
+    }
+
     .product-options {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -661,9 +651,61 @@ import MainLayout from '../layouts/MainLayout.astro';
   </style>
 
   <script>
+    // Definir las opciones de válvulas por material
+    const valvulasOptions = {
+      'acero-inoxidable': [
+        { value: 'serie1000', text: 'Serie 1000', image: '/productos/valvula-compuerta.jpg', type: 'compuerta' },
+        { value: 'serie2000', text: 'Serie 2000', image: '/productos/valvula-bola.jpg', type: 'bola' },
+        { value: 'serie7500', text: 'Serie 7500', image: '/productos/valvula-mariposa.jpg', type: 'mariposa' }
+      ],
+      'bronce': [
+        { value: 'serie9900', text: 'Serie 9900', image: '/productos/valvula-globo.jpg', type: 'globo' },
+        { value: 'serie1500', text: 'Serie 1500', image: '/productos/valvula-globo.jpg', type: 'globo' },
+        { value: 'serie1600', text: 'Serie 1600', image: '/productos/valvula-globo.jpg', type: 'globo' },
+        { value: 'serie1700', text: 'Serie 1700', image: '/productos/valvula-globo.jpg', type: 'globo' },
+        { value: 'serie86', text: 'Serie 86', image: '/productos/valvula-globo.jpg', type: 'globo' }
+      ]
+    };
+
+    function updateValvulaOptions() {
+      const selectedMaterial = document.querySelector('input[name="material"]:checked')?.value;
+      const valvulaOptionsContainer = document.getElementById('valvulaOptions');
+      
+      if (!selectedMaterial) {
+        valvulaOptionsContainer.innerHTML = '<p class="select-material-message">Por favor, seleccione primero el material</p>';
+        return;
+      }
+
+      const options = valvulasOptions[selectedMaterial];
+      let optionsHTML = '';
+      
+      options.forEach(option => {
+        optionsHTML += `
+          <label class="product-option">
+            <input type="radio" name="modeloValvula" value="${option.value}">
+            <span class="option-content">
+              <img src="${option.image}" alt="Válvula de ${option.type}">
+              <span class="option-text">${option.text}</span>
+            </span>
+          </label>
+        `;
+      });
+
+      valvulaOptionsContainer.innerHTML = optionsHTML;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       let currentStep = 1;
       const totalSteps = 5;
+
+      // Agregar event listeners para los radio buttons de material
+      const materialRadios = document.querySelectorAll('input[name="material"]');
+      materialRadios.forEach(radio => {
+        radio.addEventListener('change', updateValvulaOptions);
+      });
+
+      // Llamar a updateValvulaOptions inicialmente
+      updateValvulaOptions();
 
       function validateCurrentStep() {
         const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
