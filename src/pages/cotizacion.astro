@@ -654,16 +654,16 @@ import MainLayout from '../layouts/MainLayout.astro';
     // Definir las opciones de válvulas por material
     const valvulasOptions = {
       'acero-inoxidable': [
-        { value: 'serie1000', text: 'Serie 1000', image: '/productos/valvula-compuerta.jpg', type: 'compuerta' },
-        { value: 'serie2000', text: 'Serie 2000', image: '/productos/valvula-bola.jpg', type: 'bola' },
-        { value: 'serie7500', text: 'Serie 7500', image: '/productos/valvula-mariposa.jpg', type: 'mariposa' }
+        { value: 'serie1000', text: 'Serie 1000', image: '/productos/valvula-compuerta.jpg'},
+        { value: 'serie2000', text: 'Serie 2000', image: '/productos/valvula-bola.jpg'},
+        { value: 'serie7500', text: 'Serie 7500', image: '/productos/valvula-mariposa.jpg'}
       ],
       'bronce': [
-        { value: 'serie9900', text: 'Serie 9900', image: '/productos/valvula-globo.jpg', type: 'globo' },
-        { value: 'serie1500', text: 'Serie 1500', image: '/productos/valvula-globo.jpg', type: 'globo' },
-        { value: 'serie1600', text: 'Serie 1600', image: '/productos/valvula-globo.jpg', type: 'globo' },
-        { value: 'serie1700', text: 'Serie 1700', image: '/productos/valvula-globo.jpg', type: 'globo' },
-        { value: 'serie86', text: 'Serie 86', image: '/productos/valvula-globo.jpg', type: 'globo' }
+        { value: 'serie9900', text: 'Serie 9900', image: '/productos/valvula-globo.jpg'},
+        { value: 'serie1500', text: 'Serie 1500', image: '/productos/valvula-globo.jpg'},
+        { value: 'serie1600', text: 'Serie 1600', image: '/productos/valvula-globo.jpg'},
+        { value: 'serie1700', text: 'Serie 1700', image: '/productos/valvula-globo.jpg'},
+        { value: 'serie86', text: 'Serie 86', image: '/productos/valvula-globo.jpg'}
       ]
     };
 
@@ -684,7 +684,7 @@ import MainLayout from '../layouts/MainLayout.astro';
           <label class="product-option">
             <input type="radio" name="modeloValvula" value="${option.value}">
             <span class="option-content">
-              <img src="${option.image}" alt="Válvula de ${option.type}">
+              <img src="${option.image}" alt="Válvula de ${option.text}">
               <span class="option-text">${option.text}</span>
             </span>
           </label>
