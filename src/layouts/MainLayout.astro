@@ -8,10 +8,11 @@ import '../styles.css';
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/Logo-valvulas-sn-fn.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
     <title>{title} - Válvulas Cuevas VCJ</title>
   </head>
   <body>
-    <nav>
+    <nav class="site-nav" data-nav>
       <div class="nav-container">
         <div class="logo">
           <a href="/">
@@ -19,18 +20,110 @@ import '../styles.css';
             <span>Válvulas Cuevas Jessi</span>
           </a>
         </div>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          data-nav-toggle
+        >
+          <iconify-icon class="nav-icon" icon="mdi:menu" aria-hidden="true"></iconify-icon>
+        </button>
+      </div>
+
+      <div class="nav-menu" id="nav-menu" data-nav-menu>
+        <div class="nav-menu-header">
+          <button
+            class="nav-close"
+            type="button"
+            aria-label="Cerrar menú"
+            data-nav-close
+          >
+            <iconify-icon class="nav-icon" icon="mdi:close" aria-hidden="true"></iconify-icon>
+          </button>
+        </div>
         <div class="nav-links">
-          <a href="/">Inicio</a>
-          <a href="/nosotros">Nosotros</a>
-          <a href="/cotizacion">Cotización</a>
+          <a href="/" data-nav-link>Inicio</a>
+          <a href="/nosotros" data-nav-link>Nosotros</a>
+          <a href="/productos" data-nav-link>Productos</a>
+          <a href="/cotizacion" data-nav-link>Cotización</a>
         </div>
       </div>
+      <div class="nav-overlay" data-nav-overlay></div>
     </nav>
     <main>
       <slot />
     </main>
     <footer>
-      <p>&copy; 2025 Válvulas Cuevas VCJ. Todos los derechos reservados.</p>
+      <p>&copy; 2025 Válvulas Cuevas Jessi VCJ. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+      (() => {
+        const nav = document.querySelector('[data-nav]');
+        const toggle = document.querySelector('[data-nav-toggle]');
+        const menu = document.querySelector('[data-nav-menu]');
+        const overlay = document.querySelector('[data-nav-overlay]');
+        const closeInside = document.querySelector('[data-nav-close]');
+        const links = document.querySelectorAll('[data-nav-link]');
+
+        if (!nav || !toggle || !menu || !overlay) return;
+
+        const openMenu = () => {
+          nav.classList.add('nav-open');
+          toggle.setAttribute('aria-expanded', 'true');
+          document.documentElement.classList.add('nav-locked');
+        };
+
+        const closeMenu = () => {
+          nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.documentElement.classList.remove('nav-locked');
+        };
+
+        const isOpen = () => nav.classList.contains('nav-open');
+
+        toggle.addEventListener('click', () => {
+          if (isOpen()) closeMenu();
+          else openMenu();
+        });
+
+        overlay.addEventListener('click', closeMenu);
+        if (closeInside) closeInside.addEventListener('click', closeMenu);
+        links.forEach((a) => a.addEventListener('click', closeMenu));
+
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMenu();
+        });
+
+        let lastY = window.scrollY;
+        let ticking = false;
+        const threshold = 10;
+
+        const onScroll = () => {
+          const y = window.scrollY;
+          const delta = y - lastY;
+
+          if (Math.abs(delta) >= threshold) {
+            if (y > lastY && y > 80) nav.classList.add('nav-hidden');
+            else nav.classList.remove('nav-hidden');
+            lastY = y;
+          }
+          ticking = false;
+        };
+
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(onScroll);
+          },
+          { passive: true }
+        );
+      })();
+    </script>
   </body>
 </html>

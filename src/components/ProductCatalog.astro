@@ -1,0 +1,271 @@
+---
+const { products = [], showViewAll = false } = Astro.props;
+---
+
+<div class="product-catalog" data-product-catalog>
+  <div class="products-grid">
+    {products.map((p) => (
+      <button
+        type="button"
+        class="product-card animate-slide-up product-card-button"
+        data-product-card
+        data-product-id={p.id}
+      >
+        <div class="product-image">
+          <img src={p.imageSrc} alt={p.imageAlt ?? p.name} />
+        </div>
+        <div class="product-content">
+          <h3>{p.name}</h3>
+          <p>{p.shortDescription}</p>
+        </div>
+      </button>
+    ))}
+  </div>
+
+  {showViewAll ? (
+    <div class="catalog-actions">
+      <a href="/productos" class="cta-button">Ver todos los productos</a>
+    </div>
+  ) : null}
+
+  <dialog class="product-dialog" data-product-dialog aria-label="Detalle del producto">
+    <div class="product-dialog-header">
+      <div class="product-dialog-title" data-product-dialog-title></div>
+      <button type="button" class="product-dialog-close" data-product-dialog-close aria-label="Cerrar">
+        ✕
+      </button>
+    </div>
+
+    <div class="product-dialog-body">
+      <div class="product-dialog-media">
+        <img data-product-dialog-image src="" alt="" />
+      </div>
+      <div class="product-dialog-content">
+        <p class="product-dialog-description" data-product-dialog-description></p>
+        <ul class="product-dialog-features" data-product-dialog-features></ul>
+        <a href="/cotizacion" class="cta-button">Solicitar Cotización</a>
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<script define:vars={{ products }}>
+  (() => {
+    const root = document.currentScript?.previousElementSibling;
+    if (!root) return;
+
+    const dialog = root.querySelector('[data-product-dialog]');
+    const title = root.querySelector('[data-product-dialog-title]');
+    const image = root.querySelector('[data-product-dialog-image]');
+    const description = root.querySelector('[data-product-dialog-description]');
+    const features = root.querySelector('[data-product-dialog-features]');
+    const closeBtn = root.querySelector('[data-product-dialog-close]');
+
+    if (!dialog || !title || !image || !description || !features || !closeBtn) return;
+
+    const byId = new Map(products.map((p) => [String(p.id), p]));
+
+    const open = (id) => {
+      const p = byId.get(String(id));
+      if (!p) return;
+
+      title.textContent = p.name;
+      image.src = p.imageSrc;
+      image.alt = p.imageAlt ?? p.name;
+      description.textContent = p.description;
+
+      features.innerHTML = '';
+      (p.features ?? []).forEach((f) => {
+        const li = document.createElement('li');
+        li.textContent = f;
+        features.appendChild(li);
+      });
+
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else dialog.setAttribute('open', '');
+    };
+
+    root.querySelectorAll('[data-product-card]').forEach((btn) => {
+      btn.addEventListener('click', () => open(btn.getAttribute('data-product-id')));
+    });
+
+    const close = () => {
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
+    };
+
+    closeBtn.addEventListener('click', close);
+
+    dialog.addEventListener('click', (e) => {
+      const rect = dialog.getBoundingClientRect();
+      const inDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
+      if (!inDialog) close();
+    });
+  })();
+</script>
+
+<style>
+  .product-card-button {
+    text-align: left;
+    border: 0;
+    padding: 0;
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+  }
+
+  @media (min-width: 769px) {
+    .products-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .product-card {
+      max-width: 320px;
+      justify-self: center;
+    }
+  }
+
+  .product-card-button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .catalog-actions {
+    margin-top: var(--spacing-xl);
+    display: flex;
+    justify-content: center;
+  }
+
+  .product-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-background-alt);
+  }
+
+  .product-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-dialog {
+    width: min(920px, calc(100vw - 2rem));
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    border: 0;
+    border-radius: var(--radius-lg);
+    padding: 0;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    background: var(--color-background);
+  }
+
+  .product-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .product-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-background-alt);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .product-dialog-title {
+    font-weight: 700;
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+  }
+
+  .product-dialog-close {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    font-size: 1.25rem;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+  }
+
+  .product-dialog-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .product-dialog-media {
+    background: #000;
+  }
+
+  .product-dialog-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 280px;
+  }
+
+  .product-dialog-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .product-dialog-description {
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  .product-dialog-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .product-dialog-features li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .product-dialog-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    .product-dialog-body {
+      grid-template-columns: 1fr;
+    }
+
+    .product-dialog-media img {
+      min-height: 220px;
+    }
+  }
+</style>

@@ -11,31 +11,8 @@ import MainLayout from '../layouts/MainLayout.astro';
       </div>
 
       <form id="quoteForm" class="quote-form">
-        <!-- Paso 1: Información Personal -->
+        <!-- Paso 1: Selección de Productos -->
         <div class="form-step" data-step="1">
-          <h2>Información Personal</h2>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="nombre">Nombre*</label>
-              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
-            </div>
-            <div class="form-group">
-              <label for="empresa">Empresa</label>
-              <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa">
-            </div>
-            <div class="form-group">
-              <label for="email">Email*</label>
-              <input type="email" id="email" name="email" required placeholder="tu@email.com">
-            </div>
-            <div class="form-group">
-              <label for="telefono">Teléfono*</label>
-              <input type="tel" id="telefono" name="telefono" required placeholder="(55) XXXX-XXXX">
-            </div>
-          </div>
-        </div>
-
-        <!-- Paso 2: Selección de Productos -->
-        <div class="form-step" data-step="2" style="display: none;">
           <h2>Selección de Productos</h2>
           <div class="product-selector">
           <!-- Selector de Material -->
@@ -69,8 +46,8 @@ import MainLayout from '../layouts/MainLayout.astro';
           </div>
         </div>
 
-        <!-- Paso 3: Especificaciones -->
-        <div class="form-step" data-step="3" style="display: none;">
+        <!-- Paso 2: Especificaciones -->
+        <div class="form-step" data-step="2" style="display: none;">
           <h2>Especificaciones Técnicas</h2>
           <div class="form-grid">
             <div class="form-group">
@@ -182,12 +159,35 @@ import MainLayout from '../layouts/MainLayout.astro';
           </div>
         </div>
 
-        <!-- Paso 4: Comentarios Adicionales -->
-        <div class="form-step" data-step="4" style="display: none;">
+        <!-- Paso 3: Comentarios Adicionales -->
+        <div class="form-step" data-step="3" style="display: none;">
           <h2>Comentarios Adicionales</h2>
           <div class="form-group">
             <label for="comentarios">Comentarios o Especificaciones Adicionales</label>
             <textarea id="comentarios" name="comentarios" rows="4" placeholder="Proporcione cualquier detalle adicional que considere importante..."></textarea>
+          </div>
+        </div>
+
+        <!-- Paso 4: Información Personal -->
+        <div class="form-step" data-step="4" style="display: none;">
+          <h2>Información Personal</h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nombre">Nombre*</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa">
+            </div>
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" required placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono*</label>
+              <input type="tel" id="telefono" name="telefono" required placeholder="(55) XXXX-XXXX">
+            </div>
           </div>
         </div>
 
@@ -277,7 +277,17 @@ import MainLayout from '../layouts/MainLayout.astro';
     .form-step {
       margin-bottom: var(--spacing-3xl);
       transition: all 0.3s ease;
-      padding: var(--spacing-xl) 0;
+      padding: var(--spacing-xl);
+    }
+
+    .product-selector {
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      background: var(--color-background-alt);
+    }
+
+    .confirmation-summary {
+      border-radius: var(--radius-lg);
     }
 
     .form-step h2 {
@@ -302,8 +312,9 @@ import MainLayout from '../layouts/MainLayout.astro';
     .form-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-2xl);
-      margin-top: var(--spacing-xl);
+      column-gap: var(--spacing-2xl, 2rem);
+      row-gap: var(--spacing-2xl, 2rem);
+      margin-top: var(--spacing-xl, 2rem);
     }
 
     .form-group {
@@ -582,11 +593,16 @@ import MainLayout from '../layouts/MainLayout.astro';
 
     @media (max-width: 768px) {
       .quote-section {
-        padding: var(--spacing-xl) var(--spacing-md);
+        padding: var(--spacing-xl) var(--spacing-sm);
+      }
+
+      .container {
+        padding: 0 var(--spacing-sm);
       }
 
       .quote-form {
-        padding: var(--spacing-xl);
+        padding: var(--spacing-lg);
+        max-width: 100%;
       }
 
       .form-step {
@@ -594,13 +610,13 @@ import MainLayout from '../layouts/MainLayout.astro';
       }
 
       .form-grid {
-        gap: var(--spacing-xl);
+        gap: var(--spacing-lg);
       }
 
       .navigation-buttons {
         flex-direction: column;
         gap: var(--spacing-md);
-        padding: 0 var(--spacing-md);
+        padding: 0;
       }
 
       .nav-button,
@@ -670,8 +686,9 @@ import MainLayout from '../layouts/MainLayout.astro';
     };
 
     function updateValvulaOptions() {
-      const selectedMaterial = document.querySelector('input[name="material"]:checked')?.value;
+      const selectedMaterial = (document.querySelector('input[name="material"]:checked') as HTMLInputElement | null)?.value;
       const valvulaOptionsContainer = document.getElementById('valvulaOptions');
+      if (!valvulaOptionsContainer) return;
       
       if (!selectedMaterial) {
         valvulaOptionsContainer.innerHTML = '<p class="select-material-message">Por favor, seleccione primero el material</p>';
@@ -710,8 +727,11 @@ import MainLayout from '../layouts/MainLayout.astro';
       updateValvulaOptions();
 
       function validateCurrentStep() {
-        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
-        const requiredFields = currentStepElement.querySelectorAll('[required]');
+        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`) as HTMLElement | null;
+        if (!currentStepElement) return false;
+        const requiredFields = currentStepElement.querySelectorAll(
+          'input[required], select[required], textarea[required]'
+        ) as NodeListOf<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
         let isValid = true;
 
         document.querySelectorAll('.error-message').forEach(msg => msg.remove());
@@ -725,7 +745,7 @@ import MainLayout from '../layouts/MainLayout.astro';
             const errorMessage = document.createElement('div');
             errorMessage.className = 'error-message';
             errorMessage.textContent = 'Este campo es requerido';
-            field.parentNode.appendChild(errorMessage);
+            field.parentElement?.appendChild(errorMessage);
           } else if (field.type === 'email' && !isValidEmail(field.value)) {
             isValid = false;
             field.classList.add('error');
@@ -733,7 +753,7 @@ import MainLayout from '../layouts/MainLayout.astro';
             const errorMessage = document.createElement('div');
             errorMessage.className = 'error-message';
             errorMessage.textContent = 'Por favor ingrese un email válido';
-            field.parentNode.appendChild(errorMessage);
+            field.parentElement?.appendChild(errorMessage);
           } else if (field.type === 'tel' && !isValidPhone(field.value)) {
             isValid = false;
             field.classList.add('error');
@@ -741,27 +761,28 @@ import MainLayout from '../layouts/MainLayout.astro';
             const errorMessage = document.createElement('div');
             errorMessage.className = 'error-message';
             errorMessage.textContent = 'Por favor ingrese un teléfono válido';
-            field.parentNode.appendChild(errorMessage);
-          } else if (field.type === 'number' && field.value < 1) {
+            field.parentElement?.appendChild(errorMessage);
+          } else if (field.type === 'number' && Number(field.value) < 1) {
             isValid = false;
             field.classList.add('error');
             
             const errorMessage = document.createElement('div');
             errorMessage.className = 'error-message';
             errorMessage.textContent = 'La cantidad debe ser mayor a 0';
-            field.parentNode.appendChild(errorMessage);
+            field.parentElement?.appendChild(errorMessage);
           }
         });
 
-        if (currentStep === 2) {
+        if (currentStep === 1) {
+          const selectedMaterial = document.querySelector('input[name="material"]:checked');
           const selectedProduct = document.querySelector('input[name="modeloValvula"]:checked');
-          if (!selectedProduct) {
+          if (!selectedMaterial || !selectedProduct) {
             isValid = false;
             const productSelector = document.querySelector('.product-selector');
             const errorMessage = document.createElement('div');
             errorMessage.className = 'error-message';
-            errorMessage.textContent = 'Por favor seleccione un producto';
-            productSelector.appendChild(errorMessage);
+            errorMessage.textContent = 'Por favor seleccione material y un producto';
+            productSelector?.appendChild(errorMessage);
           }
         }
 
@@ -780,53 +801,78 @@ import MainLayout from '../layouts/MainLayout.astro';
         if (currentStep === 5) {
           // Información Personal
           const personalInfo = document.getElementById('personal-info-summary');
-          personalInfo.innerHTML = `
-            <p><strong>Nombre:</strong> ${document.getElementById('nombre').value}</p>
-            <p><strong>Empresa:</strong> ${document.getElementById('empresa').value || 'No especificada'}</p>
-            <p><strong>Email:</strong> ${document.getElementById('email').value}</p>
-            <p><strong>Teléfono:</strong> ${document.getElementById('telefono').value}</p>
-          `;
+          const nombre = (document.getElementById('nombre') as HTMLInputElement | null)?.value ?? '';
+          const empresa = (document.getElementById('empresa') as HTMLInputElement | null)?.value ?? '';
+          const email = (document.getElementById('email') as HTMLInputElement | null)?.value ?? '';
+          const telefono = (document.getElementById('telefono') as HTMLInputElement | null)?.value ?? '';
+          if (personalInfo) {
+            personalInfo.innerHTML = `
+              <p><strong>Nombre:</strong> ${nombre}</p>
+              <p><strong>Empresa:</strong> ${empresa || 'No especificada'}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Teléfono:</strong> ${telefono}</p>
+            `;
+          }
 
           // Producto Seleccionado
           const productSummary = document.getElementById('product-summary');
-          const selectedValve = document.querySelector('input[name="modeloValvula"]:checked');
-          productSummary.innerHTML = `
-            <p><strong>Modelo:</strong> ${selectedValve ? selectedValve.parentElement.querySelector('.option-text').textContent : 'No seleccionado'}</p>
-            <p><strong>Cantidad:</strong> ${document.getElementById('cantidad').value}</p>
-          `;
+          const selectedValve = document.querySelector('input[name="modeloValvula"]:checked') as HTMLInputElement | null;
+          const selectedMaterial = document.querySelector('input[name="material"]:checked') as HTMLInputElement | null;
+          const materialLabel = selectedMaterial?.value === 'acero-inoxidable' ? 'Acero Inoxidable' : selectedMaterial?.value === 'bronce' ? 'Bronce' : 'No seleccionado';
+          const modelLabel = selectedValve?.parentElement?.querySelector('.option-text')?.textContent ?? 'No seleccionado';
+          const cantidad = (document.getElementById('cantidad') as HTMLInputElement | null)?.value ?? '';
+          if (productSummary) {
+            productSummary.innerHTML = `
+              <p><strong>Material:</strong> ${materialLabel}</p>
+              <p><strong>Modelo:</strong> ${modelLabel}</p>
+              <p><strong>Cantidad:</strong> ${cantidad}</p>
+            `;
+          }
 
           // Especificaciones Técnicas
           const specsSummary = document.getElementById('specs-summary');
-          specsSummary.innerHTML = `
-            <p><strong>Material:</strong> ${document.getElementById('material').selectedOptions[0].text}</p>
-            <p><strong>Tamaño:</strong> ${document.getElementById('tamaño').selectedOptions[0].text}</p>
-            <p><strong>Tipo de Construcción:</strong> ${document.getElementById('presion').selectedOptions[0].text}</p>
-            <p><strong>Rango de Temperatura:</strong> ${document.getElementById('materiales').selectedOptions[0].text}</p>
-            <p><strong>Rango de Brida:</strong> ${document.getElementById('brida').selectedOptions[0].text}</p>
-            <p><strong>Cara de entrada:</strong> ${document.getElementById('entrada').selectedOptions[0].text}</p>
-            <p><strong>Accesorios:</strong> ${document.getElementById('accesorios_valvula').selectedOptions[0].text}</p>
-            <p><strong>Mordaza de Prueba:</strong> ${document.getElementById('mordaza').selectedOptions[0].text}</p>
-          `;
-
-          if (document.getElementById('roscadas').value) {
-            specsSummary.innerHTML += `
-              <p><strong>Especificación Roscada:</strong> ${document.getElementById('roscadas').selectedOptions[0].text}</p>
+          const tamaño = (document.getElementById('tamaño') as HTMLSelectElement | null);
+          const presion = (document.getElementById('presion') as HTMLSelectElement | null);
+          const materiales = (document.getElementById('materiales') as HTMLSelectElement | null);
+          const brida = (document.getElementById('brida') as HTMLSelectElement | null);
+          const entrada = (document.getElementById('entrada') as HTMLSelectElement | null);
+          const accesorios = (document.getElementById('accesorios_valvula') as HTMLSelectElement | null);
+          const mordaza = (document.getElementById('mordaza') as HTMLSelectElement | null);
+          const roscadas = (document.getElementById('roscadas') as HTMLSelectElement | null);
+          if (specsSummary) {
+            specsSummary.innerHTML = `
+              <p><strong>Tamaño:</strong> ${tamaño?.selectedOptions?.[0]?.text ?? ''}</p>
+              <p><strong>Tipo de Construcción:</strong> ${presion?.selectedOptions?.[0]?.text ?? ''}</p>
+              <p><strong>Rango de Temperatura:</strong> ${materiales?.selectedOptions?.[0]?.text ?? ''}</p>
+              <p><strong>Rango de Brida:</strong> ${brida?.selectedOptions?.[0]?.text ?? ''}</p>
+              <p><strong>Cara de entrada:</strong> ${entrada?.selectedOptions?.[0]?.text ?? ''}</p>
+              <p><strong>Accesorios:</strong> ${accesorios?.selectedOptions?.[0]?.text ?? ''}</p>
+              <p><strong>Mordaza de Prueba:</strong> ${mordaza?.selectedOptions?.[0]?.text ?? ''}</p>
             `;
+
+            if (roscadas?.value) {
+              specsSummary.innerHTML += `
+                <p><strong>Especificación Roscada:</strong> ${roscadas.selectedOptions?.[0]?.text ?? ''}</p>
+              `;
+            }
           }
 
           // Comentarios
           const commentsSummary = document.getElementById('comments-summary');
-          const comentarios = document.getElementById('comentarios').value;
-          commentsSummary.innerHTML = comentarios ? `<p>${comentarios}</p>` : '<p>Sin comentarios adicionales</p>';
+          const comentarios = (document.getElementById('comentarios') as HTMLTextAreaElement | null)?.value ?? '';
+          if (commentsSummary) {
+            commentsSummary.innerHTML = comentarios ? `<p>${comentarios}</p>` : '<p>Sin comentarios adicionales</p>';
+          }
         }
       }
 
       function updateStepVisibility() {
-        document.querySelectorAll('.form-step').forEach(step => {
-          step.style.display = 'none';
+        document.querySelectorAll('.form-step').forEach((step) => {
+          (step as HTMLElement).style.display = 'none';
         });
         
-        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+        const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`) as HTMLElement | null;
+        if (!currentStepElement) return;
         currentStepElement.style.display = 'block';
         currentStepElement.style.opacity = '0';
         setTimeout(() => {
@@ -870,11 +916,13 @@ import MainLayout from '../layouts/MainLayout.astro';
         e.preventDefault();
         
         if (validateCurrentStep()) {
-          const formData = new FormData(e.target);
+          const form = e.target as HTMLFormElement | null;
+          if (!form) return;
+          const formData = new FormData(form);
           const data = Object.fromEntries(formData.entries());
           
           try {
-            const submitButton = document.getElementById('submitQuote');
+            const submitButton = document.getElementById('submitQuote') as HTMLButtonElement | null;
             if (submitButton) {
               submitButton.disabled = true;
               submitButton.textContent = 'Enviando...';
@@ -898,7 +946,7 @@ import MainLayout from '../layouts/MainLayout.astro';
             console.error('Error:', error);
             alert('Lo sentimos, hubo un error al enviar la cotización. Por favor, intenta nuevamente.');
           } finally {
-            const submitButton = document.getElementById('submitQuote');
+            const submitButton = document.getElementById('submitQuote') as HTMLButtonElement | null;
             if (submitButton) {
               submitButton.disabled = false;
               submitButton.textContent = 'Solicitar Cotización';
@@ -909,13 +957,11 @@ import MainLayout from '../layouts/MainLayout.astro';
 
       updateStepVisibility();
 
-      document.querySelectorAll('input, select, textarea').forEach(field => {
-        field.addEventListener('input', () => {
+      document.querySelectorAll('input, select, textarea').forEach((field) => {
+        (field as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement).addEventListener('input', () => {
           field.classList.remove('error');
-          const errorMessage = field.parentNode.querySelector('.error-message');
-          if (errorMessage) {
-            errorMessage.remove();
-          }
+          const errorMessage = (field as HTMLElement).parentElement?.querySelector('.error-message');
+          if (errorMessage) errorMessage.remove();
         });
       });
     });

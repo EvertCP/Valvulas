@@ -1,5 +1,6 @@
 ---
-import ProductCatalog from './ProductCatalog.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import ProductCatalog from '../components/ProductCatalog.astro';
 
 const products = [
   {
@@ -80,134 +81,38 @@ const products = [
 ];
 ---
 
-<section class="products-section">
-  <div class="container">
-    <h2 class="text-center mb-4">Nuestros Productos</h2>
-    <ProductCatalog products={products} showViewAll={true} />
-  </div>
-</section>
+<MainLayout title="Productos">
+  <section class="products-page">
+    <div class="container">
+      <h1>Nuestros Productos</h1>
+      <p class="subtitle">
+        Explora nuestro catálogo. Haz clic en cualquier producto para ver su información completa.
+      </p>
+      <ProductCatalog products={products} showViewAll={false} />
+    </div>
+  </section>
 
-<style>
-  .products-section {
-    padding: var(--spacing-xl) var(--spacing-lg);
-    background-color: var(--color-background-alt);
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-  }
-
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-xl);
-  }
-
-  .product-card {
-    background: var(--color-background);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .product-image {
-    position: relative;
-    padding-top: 66.67%; /* 3:2 aspect ratio */
-    overflow: hidden;
-  }
-
-  .product-image img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-normal);
-  }
-
-  .product-card:hover .product-image img {
-    transform: scale(1.05);
-  }
-
-  .product-content {
-    padding: var(--spacing-lg);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .product-content h3 {
-    color: var(--color-text);
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-md);
-  }
-
-  .product-content p {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.6;
-  }
-
-  .product-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--spacing-lg);
-  }
-
-  .product-features li {
-    position: relative;
-    padding-left: var(--spacing-lg);
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text);
-  }
-
-  .product-features li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-weight: bold;
-  }
-
-  .cta-button {
-    margin-top: auto;
-    text-align: center;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background-color: var(--color-primary);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    transition: all var(--transition-normal);
-    border: 2px solid transparent;
-  }
-
-  .cta-button:hover {
-    background-color: var(--color-primary-dark);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 768px) {
-    .products-grid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-md);
+  <style>
+    .products-page {
+      padding: 7rem var(--spacing-lg) var(--spacing-xl);
+      background-color: var(--color-background-alt);
     }
 
-    .product-content {
-      padding: var(--spacing-md);
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-lg);
     }
-  }
-</style>
+
+    h1 {
+      color: var(--color-text);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .subtitle {
+      color: var(--color-text-light);
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.6;
+    }
+  </style>
+</MainLayout>
