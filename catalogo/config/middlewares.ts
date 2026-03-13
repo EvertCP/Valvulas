@@ -15,16 +15,14 @@ const config: Core.Config.Middlewares = [
             'data:',
             'blob:',
             'dl.airtable.com',
-            // Agrega aquí tu dominio de producción de Astro
-            // 'https://tu-dominio.com',
+            'https://valvulas.vercel.app',
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
             'dl.airtable.com',
-            // Agrega aquí tu dominio de producción de Astro
-            // 'https://tu-dominio.com',
+            'https://valvulas.vercel.app',
           ],
           upgradeInsecureRequests: null,
         },
@@ -37,10 +35,7 @@ const config: Core.Config.Middlewares = [
       enabled: true,
       origin: [
         'http://localhost:4321', // Desarrollo local
-        // Agrega aquí tus dominios de producción cuando despliegues:
-        // 'https://tu-dominio.com',
-        // 'https://tu-dominio.netlify.app',
-        // 'https://tu-dominio.vercel.app',
+        'https://valvulas.vercel.app', // Producción en Vercel
       ],
     },
   },
