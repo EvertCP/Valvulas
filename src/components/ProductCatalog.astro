@@ -120,26 +120,44 @@ const { products = [], showViewAll = false } = Astro.props;
 
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     margin-top: var(--spacing-xl);
   }
 
   @media (min-width: 769px) {
     .products-grid {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-md);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
 
     .product-card {
-      max-width: 320px;
+      max-width: 340px;
       justify-self: center;
     }
   }
 
-  .product-card-button:focus-visible {
+  .product-card {
+    background: var(--color-background);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .product-card-button:focus-visible .product-card {
     outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
+    outline-offset: 2px;
   }
 
   .catalog-actions {
@@ -153,7 +171,7 @@ const { products = [], showViewAll = false } = Astro.props;
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background: var(--color-background-alt);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
   }
 
   .product-image img {
@@ -162,6 +180,39 @@ const { products = [], showViewAll = false } = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+
+  .product-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+  }
+
+  .product-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .product-content p {
+    font-size: 0.9375rem;
+    color: var(--color-text-light);
+    margin: 0;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .product-dialog {

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "productos",
+  "info": {
+    "singularName": "producto",
+    "pluralName": "productos",
+    "displayName": "Producto",
+    "description": "Catálogo de productos de válvulas"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "descripcionCorta": {
+      "type": "text",
+      "maxLength": 200,
+      "required": true
+    },
+    "descripcion": {
+      "type": "text",
+      "required": true
+    },
+    "imagen": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "caracteristicas": {
+      "type": "json",
+      "required": false
+    },
+    "orden": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
