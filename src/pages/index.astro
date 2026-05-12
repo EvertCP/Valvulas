@@ -68,49 +68,84 @@ import Footer from '../components/Footer.astro';
   <section id="nosotros" class="about-section">
     <div class="about-container">
       <div class="about-hero-content">
+        <p class="section-label">DESDE 2003</p>
         <h2>Nuestra Historia</h2>
-        <p class="subtitle">Más de 20 años de excelencia en la industria</p>
+        <p class="subtitle">Más de 20 años de excelencia en la industria de válvulas industriales</p>
       </div>
 
       <div class="about-grid">
         <div class="about-content">
-          <h3>Quiénes Somos</h3>
+          <p class="content-label">QUIÉNES SOMOS</p>
+          <h3>Soluciones de control de flujo de la más alta calidad</h3>
           <p>Válvulas Cuevas VCJ se fundó en 2003 con una visión clara: proporcionar soluciones de control de flujo de la más alta calidad para la industria mexicana. Durante más de dos décadas, hemos crecido hasta convertirnos en un referente nacional en el sector de válvulas industriales.</p>
         </div>
-        <div class="about-image">
-          <img src="/hero.png" alt="Instalaciones de Válvulas Cuevas VCJ" />
+        <div class="about-card">
+          <img class="about-image" src="/hero.png" alt="Válvulas Cuevas" />
         </div>
       </div>
 
       <div class="timeline-section">
+        <p class="section-label">HITOS IMPORTANTES</p>
         <h3>Nuestra Trayectoria</h3>
         <div class="timeline">
-          <div class="timeline-item">
-            <div class="year">2003</div>
-            <div class="content">
-              <h4>Fundación</h4>
-              <p>Inicio de operaciones en la Ciudad de México</p>
+          <div class="tl-event tl-left">
+            <div class="tl-side">
+              <span class="tl-year">2003</span>
+              <div class="tl-card">
+                <div class="tl-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  </svg>
+                </div>
+                <h4>Fundación</h4>
+                <p>Inicio de operaciones en la Ciudad de México</p>
+              </div>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="year">2008</div>
-            <div class="content">
-              <h4>Expansión Nacional</h4>
-              <p>Apertura de sucursales en Monterrey y Guadalajara</p>
+          <div class="tl-event tl-right">
+            <div class="tl-side">
+              <span class="tl-year">2008</span>
+              <div class="tl-card">
+                <div class="tl-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <h4>Expansión Nacional</h4>
+                <p>Apertura de sucursales en Monterrey y Guadalajara</p>
+              </div>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="year">2015</div>
-            <div class="content">
-              <h4>Certificación ISO</h4>
-              <p>Obtención de certificaciones internacionales de calidad</p>
+          <div class="tl-event tl-left">
+            <div class="tl-side">
+              <span class="tl-year">2015</span>
+              <div class="tl-card">
+                <div class="tl-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </div>
+                <h4>Certificación ISO</h4>
+                <p>Obtención de certificaciones internacionales de calidad</p>
+              </div>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="year">2023</div>
-            <div class="content">
-              <h4>Innovación Digital</h4>
-              <p>Implementación de sistemas automatizados y plataforma en línea</p>
+          <div class="tl-event tl-right">
+            <div class="tl-side">
+              <span class="tl-year">2023</span>
+              <div class="tl-card">
+                <div class="tl-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <h4>Innovación Digital</h4>
+                <p>Implementación de sistemas automatizados y plataforma en línea</p>
+              </div>
             </div>
           </div>
         </div>
@@ -119,18 +154,30 @@ import Footer from '../components/Footer.astro';
       <div class="stats-section">
         <div class="stats-grid">
           <div class="stat-item">
+            <div class="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
             <div class="stat-number">20+</div>
             <div class="stat-label">Años de Experiencia</div>
           </div>
           <div class="stat-item">
+            <div class="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
             <div class="stat-number">1000+</div>
             <div class="stat-label">Clientes Satisfechos</div>
           </div>
           <div class="stat-item">
+            <div class="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
             <div class="stat-number">50+</div>
             <div class="stat-label">Especialistas</div>
           </div>
           <div class="stat-item">
+            <div class="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
             <div class="stat-number">3</div>
             <div class="stat-label">Centros de Distribución</div>
           </div>
@@ -138,25 +185,35 @@ import Footer from '../components/Footer.astro';
       </div>
 
       <div class="markets-section">
+        <p class="section-label">SECTORES</p>
         <h3>Mercados que Atendemos</h3>
+        <p class="section-subtitle">Soluciones especializadas para cada industria</p>
         <div class="markets-grid">
           <div class="market-card">
-            <div class="market-icon">🏭</div>
+            <div class="market-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l5-4 5 4v12"/><path d="M9 20v-4h2v4"/><path d="M17 20V4l3 2v14"/></svg>
+            </div>
             <h4>Industrial</h4>
             <p>Manufactura y procesos industriales</p>
           </div>
           <div class="market-card">
-            <div class="market-icon">⚡</div>
+            <div class="market-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
             <h4>Energético</h4>
             <p>Plantas de energía y distribución</p>
           </div>
           <div class="market-card">
-            <div class="market-icon">💧</div>
+            <div class="market-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </div>
             <h4>Hidráulico</h4>
             <p>Tratamiento y distribución de agua</p>
           </div>
           <div class="market-card">
-            <div class="market-icon">🔧</div>
+            <div class="market-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
             <h4>Petroquímico</h4>
             <p>Refinación y procesamiento</p>
           </div>
@@ -164,17 +221,28 @@ import Footer from '../components/Footer.astro';
       </div>
 
       <div class="values-section">
+        <p class="section-label">LO QUE NOS DEFINE</p>
         <h3>Nuestros Valores</h3>
+        <p class="section-subtitle">Los principios que guían cada una de nuestras acciones</p>
         <div class="values-grid">
           <div class="value-card">
+            <div class="value-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
             <h4>Calidad</h4>
             <p>Compromiso con la excelencia en cada producto y servicio</p>
           </div>
           <div class="value-card">
+            <div class="value-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
             <h4>Innovación</h4>
             <p>Búsqueda constante de mejores soluciones</p>
           </div>
           <div class="value-card">
+            <div class="value-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
             <h4>Integridad</h4>
             <p>Honestidad y transparencia en cada operación</p>
           </div>
@@ -386,10 +454,10 @@ import Footer from '../components/Footer.astro';
     line-height: 1.6;
   }
 
-  /* About Section Styles */
+  /* About Section Styles - Mobile First */
   .about-section {
-    padding: 4rem 2rem;
-    background-color: white;
+    padding: 3rem 1rem;
+    background-color: #f8f9fa;
   }
 
   .about-container {
@@ -397,121 +465,426 @@ import Footer from '../components/Footer.astro';
     margin: 0 auto;
   }
 
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #dc2626;
+    margin-bottom: 0.75rem;
+  }
+
   .about-hero-content {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .about-hero-content h2 {
-    font-size: 2.5rem;
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
+    font-size: 1.875rem;
+    color: #111827;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    line-height: 1.2;
   }
 
   .subtitle {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
+    font-size: 1rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    padding: 0 1rem;
   }
 
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    margin-bottom: 4rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .content-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #dc2626;
+    margin-bottom: 0.75rem;
   }
 
   .about-content h3 {
-    font-size: 1.75rem;
-    color: var(--color-primary);
+    font-size: 1.25rem;
+    color: #111827;
     margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
   }
 
   .about-content p {
     line-height: 1.8;
-    color: var(--color-text);
+    color: #4b5563;
+    font-size: 0.9375rem;
   }
 
-  .about-image img {
-    width: 100%;
+  .about-card {
+    background: white;
+    padding: 1rem;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
   }
 
-  /* Timeline Styles */
+  .about-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  /* Tablet styles */
+  @media (min-width: 640px) {
+    .about-section {
+      padding: 4rem 2rem;
+    }
+
+    .section-label {
+      font-size: 0.8125rem;
+    }
+
+    .about-hero-content {
+      margin-bottom: 3rem;
+    }
+
+    .about-hero-content h2 {
+      font-size: 2.25rem;
+    }
+
+    .subtitle {
+      font-size: 1.0625rem;
+    }
+
+    .about-content h3 {
+      font-size: 1.375rem;
+    }
+
+    .about-content p {
+      font-size: 0.96875rem;
+    }
+
+    .about-card {
+      padding: 1.25rem;
+      border-radius: 14px;
+    }
+
+    .about-image {
+      border-radius: 10px;
+    }
+  }
+
+  /* Desktop styles */
+  @media (min-width: 1024px) {
+    .about-section {
+      padding: 5rem 2rem;
+    }
+
+    .section-label {
+      font-size: 0.875rem;
+    }
+
+    .about-hero-content {
+      margin-bottom: 4rem;
+    }
+
+    .about-hero-content h2 {
+      font-size: 2.75rem;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+      margin-bottom: 6rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .content-label {
+      font-size: 0.75rem;
+    }
+
+    .about-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-content p {
+      font-size: 1rem;
+    }
+
+    .about-card {
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
+
+    .about-image {
+      border-radius: 12px;
+    }
+  }
+
+  /* Timeline Styles - Mobile First */
   .timeline-section {
-    margin: 4rem 0;
+    margin: 3rem 0;
   }
 
   .timeline-section h3 {
     text-align: center;
-    font-size: 2rem;
-    color: var(--color-primary);
-    margin-bottom: 3rem;
+    font-size: 1.75rem;
+    color: #111827;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
   }
 
   .timeline {
     position: relative;
-    max-width: 800px;
     margin: 0 auto;
+    padding: 1rem 0 1rem 50px;
   }
 
   .timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 16px;
     width: 2px;
     height: 100%;
-    background: var(--color-primary);
-    opacity: 0.3;
+    background: #dc2626;
+    top: 0;
   }
 
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    align-items: center;
+  .tl-event {
+    position: relative;
+    margin-bottom: 3rem;
   }
 
-  .timeline-item:nth-child(even) .year {
-    order: 3;
+  .tl-event:last-child {
+    margin-bottom: 0;
   }
 
-  .timeline-item:nth-child(even) .content {
-    order: 1;
-    text-align: right;
+  .tl-event::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #dc2626;
+    border-radius: 50%;
+    left: -40px;
+    top: 2.5rem;
+    border: 3px solid #f8f9fa;
+    box-shadow: 0 0 0 2px #dc2626;
   }
 
-  .year {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-primary);
-    background: white;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    text-align: center;
+  .tl-side {
+    display: block;
   }
 
-  .timeline-item .content h4 {
-    color: var(--color-primary);
+  .tl-year {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fecaca;
+    line-height: 1;
     margin-bottom: 0.5rem;
   }
 
-  /* Stats Section */
-  .stats-section {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #1565c0 100%);
-    padding: 3rem 2rem;
+  .tl-card {
+    background: white;
+    padding: 1.5rem;
     border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+  }
+
+  .tl-icon {
+    width: 40px;
+    height: 40px;
+    background: #fef2f2;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    border: 2px solid #fecaca;
+  }
+
+  .tl-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .tl-card h4 {
+    color: #111827;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .tl-card p {
+    color: #6b7280;
+    line-height: 1.6;
+    font-size: 0.875rem;
+  }
+
+  /* Tablet timeline */
+  @media (min-width: 640px) {
+    .timeline-section {
+      margin: 3.5rem 0;
+    }
+
+    .timeline-section h3 {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .timeline {
+      padding-left: 70px;
+    }
+
+    .timeline::before {
+      left: 24px;
+    }
+
+    .tl-event::before {
+      left: -52px;
+    }
+
+    .tl-year {
+      font-size: 2.5rem;
+    }
+
+    .tl-card {
+      padding: 1.75rem;
+    }
+
+    .tl-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    .tl-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .tl-card h4 {
+      font-size: 1.0625rem;
+    }
+
+    .tl-card p {
+      font-size: 0.90625rem;
+    }
+  }
+
+  /* Desktop timeline */
+  @media (min-width: 1024px) {
+    .timeline-section {
+      margin: 4rem 0;
+    }
+
+    .timeline-section h3 {
+      font-size: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .timeline {
+      max-width: 1000px;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+    }
+
+    .tl-event {
+      width: 50%;
+      margin-bottom: 5rem;
+      padding-right: 3.5rem;
+      padding-left: 0;
+    }
+
+    .tl-event::before {
+      left: auto;
+      right: -8px;
+      top: 3rem;
+    }
+
+    .tl-event.tl-right {
+      margin-left: 50%;
+      padding-left: 3.5rem;
+      padding-right: 0;
+    }
+
+    .tl-event.tl-right::before {
+      right: auto;
+      left: -8px;
+    }
+
+    .tl-event.tl-left .tl-side {
+      text-align: right;
+    }
+
+    .tl-event.tl-left .tl-card {
+      text-align: left;
+    }
+
+    .tl-year {
+      font-size: 4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .tl-card {
+      padding: 2rem;
+    }
+
+    .tl-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .tl-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .tl-card h4 {
+      font-size: 1.125rem;
+    }
+
+    .tl-card p {
+      font-size: 0.9375rem;
+    }
+  }
+
+  /* Stats Section - Mobile First */
+  .stats-section {
+    background: #1a1a2e;
+    padding: 2.5rem 1.5rem;
+    border-radius: 16px;
     margin: 4rem 0;
   }
 
   .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
   }
 
   .stat-item {
@@ -519,97 +892,324 @@ import Footer from '../components/Footer.astro';
     color: white;
   }
 
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(220, 38, 38, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+  }
+
+  .stat-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
   .stat-number {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    color: white;
   }
 
   .stat-label {
-    font-size: 1.1rem;
-    opacity: 0.9;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    color: white;
   }
 
-  /* Markets Section */
+  /* Markets Section - Mobile First */
   .markets-section {
     margin: 4rem 0;
+    text-align: center;
   }
 
   .markets-section h3 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--color-primary);
-    margin-bottom: 3rem;
+    font-size: 1.75rem;
+    color: #111827;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 2.5rem;
   }
 
   .markets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .market-card {
-    background: #f8f9fa;
-    padding: 2rem;
+    background: white;
+    padding: 1.5rem 1rem;
     border-radius: 12px;
-    text-align: center;
+    text-align: left;
+    border: 1px solid #e5e7eb;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .market-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   }
 
   .market-icon {
-    font-size: 3rem;
+    width: 40px;
+    height: 40px;
+    background: #fef2f2;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
+    border: 1px solid #fecaca;
+  }
+
+  .market-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .market-card h4 {
-    color: var(--color-primary);
+    color: #111827;
     margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
   }
 
-  /* Values Section */
+  .market-card p {
+    color: #6b7280;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  /* Values Section - Mobile First */
   .values-section {
     margin: 4rem 0;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 3rem 1.5rem;
   }
 
   .values-section h3 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--color-primary);
-    margin-bottom: 3rem;
+    font-size: 1.75rem;
+    color: #111827;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
   }
 
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .value-card {
     background: white;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     border-radius: 12px;
-    border: 2px solid #e0e0e0;
-    transition: border-color 0.3s ease;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .value-card:hover {
-    border-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .value-icon {
+    width: 44px;
+    height: 44px;
+    background: #dc2626;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .value-icon svg {
+    width: 22px;
+    height: 22px;
   }
 
   .value-card h4 {
-    color: var(--color-primary);
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
+    color: #111827;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 700;
   }
 
   .value-card p {
     line-height: 1.6;
-    color: var(--color-text);
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  /* Tablet - Stats, Markets, Values */
+  @media (min-width: 640px) {
+    .stats-section {
+      padding: 3rem 2.5rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+    }
+
+    .markets-section h3 {
+      font-size: 2rem;
+    }
+
+    .markets-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .market-card {
+      padding: 1.75rem 1.25rem;
+    }
+
+    .values-section h3 {
+      font-size: 2rem;
+    }
+
+    .values-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .value-card {
+      padding: 2rem;
+    }
+  }
+
+  /* Desktop - Stats, Markets, Values */
+  @media (min-width: 1024px) {
+    .stats-section {
+      padding: 3.5rem 3rem;
+      border-radius: 20px;
+    }
+
+    .stats-grid {
+      gap: 2rem;
+    }
+
+    .stat-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 1rem;
+    }
+
+    .stat-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+    }
+
+    .markets-section {
+      margin: 5rem 0;
+    }
+
+    .markets-section h3 {
+      font-size: 2.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .markets-grid {
+      gap: 2rem;
+    }
+
+    .market-card {
+      padding: 2rem 1.5rem;
+      border-radius: 14px;
+    }
+
+    .market-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+
+    .market-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .market-card h4 {
+      font-size: 1rem;
+    }
+
+    .market-card p {
+      font-size: 0.875rem;
+    }
+
+    .values-section {
+      margin: 5rem 0;
+      padding: 4rem 3rem;
+      border-radius: 20px;
+    }
+
+    .values-section h3 {
+      font-size: 2.25rem;
+    }
+
+    .values-grid {
+      gap: 2rem;
+    }
+
+    .value-card {
+      padding: 2.5rem 2rem;
+      border-radius: 14px;
+    }
+
+    .value-icon {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 1.25rem;
+    }
+
+    .value-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .value-card h4 {
+      font-size: 1.25rem;
+    }
+
+    .value-card p {
+      font-size: 0.9375rem;
+    }
   }
 
   /* Contact Section Styles */
@@ -691,67 +1291,26 @@ import Footer from '../components/Footer.astro';
     margin-top: 1rem;
   }
 
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .hero h1 {
-      font-size: 2.5rem;
+  /* Additional Responsive Adjustments */
+  @media (min-width: 640px) {
+    .stats-section {
+      padding: 3.5rem 2rem;
     }
 
-    .hero-subtitle {
-      font-size: 1.25rem;
+    .markets-section,
+    .values-section {
+      margin: 3.5rem 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .stats-section {
+      padding: 4rem 2rem;
     }
 
-    .hero-cta {
-      flex-direction: column;
-    }
-
-    .features {
-      padding: 3rem 1rem;
-    }
-
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .timeline::before {
-      left: 30px;
-    }
-
-    .timeline-item {
-      grid-template-columns: auto 1fr;
-      gap: 1rem;
-    }
-
-    .timeline-item:nth-child(even) .year {
-      order: 1;
-    }
-
-    .timeline-item:nth-child(even) .content {
-      order: 2;
-      text-align: left;
-    }
-
-    .year {
-      font-size: 1.2rem;
-    }
-
-    .form-row {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-
-    .contact-form {
-      padding: 2rem 1.5rem;
-    }
-
-    .about-hero-content h2 {
-      font-size: 2rem;
-    }
-
-    .markets-grid,
-    .values-grid {
-      grid-template-columns: 1fr;
+    .markets-section,
+    .values-section {
+      margin: 4rem 0;
     }
   }
 </style>
